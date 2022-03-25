@@ -10,6 +10,7 @@ import category_encoders as ce
 
 class Regressor(BaseEstimator):
     def __init__(self):
+        print("init Regressor")
         self.ohe_cols = ['classement', 'region', 'commentaire', 'type', 'consommation', 'elevage']
         self.tgt_cols = ['vin', 'producteur', 'appellation']
         ohe_pipeline = Pipeline([
@@ -31,7 +32,7 @@ class Regressor(BaseEstimator):
         ])
 
     def fit(self, X, Y):
-        print(X.info())
+        print("fit Regressor")
         X.drop(columns=['guide',  'garde', 'cuvee',
                         'prod_id',
                         'adresse', 'CP', 'commune', 'pays',

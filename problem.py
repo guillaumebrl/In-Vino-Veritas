@@ -32,24 +32,26 @@ score_types = [
     MAPE(name="MAPE"),
 ]
 
-def get_train_data():
-    train_data = pd.read_csv("data/train.csv", sep=";")
-    train_data = train_data[~train_data['millesime'].isna()].reset_index(drop=True)
-    train_data = train_data[~train_data['prix_m'].isna()].reset_index(drop=True)
+def get_train_data(path="."):
+    train_data = pd.read_csv("data/train.csv", sep=";", encoding='utf-8')
+    train_data = train_data[train_data['millesime'].notna()].reset_index()
+    train_data = train_data[train_data['prix_m'].notna()].reset_index()
 
     Y = train_data[['prix_m']].copy()
 
     X = train_data.drop(columns=[ 'prix', 'prix_min', 'prix_max', 'prix_m'])
+    print("finish get_train_data")
     return X,Y
 
-def get_test_data():
-    test_data = pd.read_csv("data/test.csv", sep=";")
-    test_data = test_data[~test_data['millesime'].isna()].reset_index(drop=True)
-    test_data = test_data[~test_data['prix_m'].isna()].reset_index(drop=True)
+def get_test_data(path="."):
+    test_data = pd.read_csv("data/test.csv", sep=";", encoding='utf-8')
+    test_data = test_data[test_data['millesime'].notna()].reset_index()
+    test_data = test_data[test_data['prix_m'].notna()].reset_index()
 
     Y = test_data[['prix_m']].copy()
 
     X = test_data.drop(columns=[ 'prix', 'prix_min', 'prix_max', 'prix_m'])
+    print("finish get_test_data")
     return X,Y
 
 def get_cv(X, y):
