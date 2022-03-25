@@ -11,7 +11,7 @@ from rampwf.score_types.base import BaseScoreType
 
 problem_title = "In-Vino-Veritas"
 
-Predictions = rw.prediction_types.make_regression(label_names="prix_m")
+Predictions = rw.prediction_types.make_regression(label_names=["prix_m"])
 workflow = rw.workflows.Regressor()
 
 class MAPE(BaseScoreType):
@@ -34,24 +34,28 @@ score_types = [
 
 def get_train_data(path="."):
     train_data = pd.read_csv("data/train.csv", sep=";", encoding='utf-8')
-    train_data = train_data[train_data['millesime'].notna()].reset_index()
-    train_data = train_data[train_data['prix_m'].notna()].reset_index()
+    train_data = train_data[train_data['millesime'].notna()].reset_index(drop=True)
+    train_data = train_data[train_data['prix_m'].notna()].reset_index(drop=True)
 
     Y = train_data[['prix_m']].copy()
 
     X = train_data.drop(columns=[ 'prix', 'prix_min', 'prix_max', 'prix_m'])
-    print("finish get_train_data")
+
+    X = X.to_records(index=False)
+    Y = Y.to_numpy()
     return X,Y
 
 def get_test_data(path="."):
     test_data = pd.read_csv("data/test.csv", sep=";", encoding='utf-8')
-    test_data = test_data[test_data['millesime'].notna()].reset_index()
-    test_data = test_data[test_data['prix_m'].notna()].reset_index()
+    test_data = test_data[test_data['millesime'].notna()].reset_index(drop=True)
+    test_data = test_data[test_data['prix_m'].notna()].reset_index(drop=True)
 
     Y = test_data[['prix_m']].copy()
 
     X = test_data.drop(columns=[ 'prix', 'prix_min', 'prix_max', 'prix_m'])
-    print("finish get_test_data")
+
+    X = X.to_records(index=False)
+    Y = Y.to_numpy()
     return X,Y
 
 def get_cv(X, y):
