@@ -4,7 +4,6 @@ ramp-utils
 numpy
 scikit-learn>=0.22
 pandas
-geopandas
 plotly
 matplotlib
 seaborn
