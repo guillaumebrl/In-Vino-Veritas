@@ -20,7 +20,7 @@ pip install -U -r requirements.txt
 
 ### Challenge description
 
-Get started with the [dedicated notebook](in_vino_veritas_starting_kit.ipynb)
+Get started with the [dedicated notebook](./in_vino_veritas_starting_kit.ipynb)
 
 
 ### Test a submission
