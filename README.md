@@ -6,7 +6,7 @@
 
 Authors : David Admète, Guillaume Bril, Célian Charleau, Hubert de Lesquen, Ruben Didier, Alexandre Gommez. 
 
-<img src="./img/Bandeau.jpeg" alt="Hparis" width="400"/>
+<img src="./img/Bandeau.jpeg" alt="Hparis" width="1200"/>
 
 This git repository contains all the files needed to participate to the In Vino Veritas ramp data challenge whose goal is to predict the price of a given wine with the best possible accuracy.
 
