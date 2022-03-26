@@ -34,8 +34,6 @@ score_types = [
 
 def get_train_data(path="."):
     train_data = pd.read_csv("data/train.csv", sep=";", encoding='utf-8')
-    train_data = train_data[train_data['millesime'].notna()].reset_index(drop=True)
-    train_data = train_data[train_data['prix_m'].notna()].reset_index(drop=True)
 
     Y = train_data[['prix_m']].copy()
 
@@ -47,8 +45,6 @@ def get_train_data(path="."):
 
 def get_test_data(path="."):
     test_data = pd.read_csv("data/test.csv", sep=";", encoding='utf-8')
-    test_data = test_data[test_data['millesime'].notna()].reset_index(drop=True)
-    test_data = test_data[test_data['prix_m'].notna()].reset_index(drop=True)
 
     Y = test_data[['prix_m']].copy()
 
