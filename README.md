@@ -18,9 +18,6 @@ following command-line:
 pip install -U -r requirements.txt
 ```
 
-If you are using `conda`, we provide an `environment.yml` file for similar
-usage.
-
 ### Challenge description
 
 Get started with the [dedicated notebook](in_vino_vertias_starting_kit.ipynb)
